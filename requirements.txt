@@ -2,3 +2,4 @@ coqui-tts
 gradio>=4.0
 pydub
 ffmpeg-python
+transformers==4.46.2   # pinned to compatible version
