@@ -1,5 +1,8 @@
-coqui-tts
+fastapi
+uvicorn[standard]
 gradio>=4.0
+python-multipart
 pydub
-ffmpeg-python
-transformers==4.46.2   # pinned to compatible version
+torch torchvision torchaudio --index-url https://download.pytorch.org/whl/cpu
+transformers==4.46.2
+coqui-tts
