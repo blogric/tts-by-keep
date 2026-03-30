@@ -6,9 +6,8 @@ import subprocess
 import os
 import tempfile
 
-# Load model once (CPU for Railway free tier)
+# Load model (CPU only for Railway)
 tts = TTS("tts_models/multilingual/multi-dataset/xtts_v2", gpu=False)
-
 def generate_tts(text: str, character: str, speed: float, pitch: float):
     # Select your voice sample
     if character == "Keep Voice 1":
