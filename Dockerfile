@@ -13,15 +13,15 @@ RUN mkdir -p voices
 # Install dependencies
 RUN pip install --no-cache-dir -r requirements.txt
 
-# Pre-accept Coqui TOS and download the XTTS v2 model during build (this fixes the EOFError)
-RUN python -c "
+# Pre-accept Coqui TOS + Download XTTS v2 model during build
+RUN python -c '
 import os
-os.environ['COQUI_TOS_AGREED'] = '1'
+os.environ["COQUI_TOS_AGREED"] = "1"
+print("Downloading XTTS v2 model (this will take 8-15 minutes on first build)...")
 from TTS.api import TTS
-print('Downloading XTTS v2 model... (this may take 5-10 minutes)')
-tts = TTS('tts_models/multilingual/multi-dataset/xtts_v2', gpu=False)
-print('Model downloaded successfully!')
-"
+tts = TTS("tts_models/multilingual/multi-dataset/xtts_v2", gpu=False)
+print("✅ XTTS v2 model downloaded successfully!")
+'
 
 EXPOSE 8000
 CMD ["uvicorn", "app:app", "--host", "0.0.0.0", "--port", "8000"]
