@@ -9,14 +9,16 @@ import torch
 import tempfile
 import subprocess
 
+# Accept TOS before loading model
+os.environ["COQUI_TOS_AGREED"] = "1"
+
 app = FastAPI(title="TTS by Keep")
 
 os.makedirs("voices", exist_ok=True)
 
-# Load TTS model (will use pre-downloaded model from build stage)
 print("Loading XTTS v2 model...")
 tts = TTS("tts_models/multilingual/multi-dataset/xtts_v2", gpu=False)
-print("Model loaded successfully!")
+print("✅ Model loaded successfully!")
 
 # Simple admin password - CHANGE THIS immediately after first deploy!
 ADMIN_PASSWORD = "keepadmin123"   # ← Change to your strong password
